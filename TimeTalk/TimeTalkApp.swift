@@ -9,9 +9,26 @@ import SwiftUI
 
 @main
 struct TimeTalkApp: App {
+    // Register the AppDelegate for UIKit lifecycle events.
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
     }
 }
+
+/*
+
+import SwiftUI
+
+@main
+struct TimeTalkApp: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+}
+*/
