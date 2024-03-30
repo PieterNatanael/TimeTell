@@ -15,13 +15,38 @@ struct ContentView: View {
     @State private var timer: Timer?
     @State private var speechSynthesizer = AVSpeechSynthesizer()
     @State private var backgroundTaskID: UIBackgroundTaskIdentifier?
+    @State private var showAd: Bool = false
+    @State private var showExplain: Bool = false
 
     var body: some View {
         ZStack {
             //BG
             LinearGradient(colors: [Color(#colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)),.white], startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
+           
+            
+            
             VStack {
+                HStack{
+                    Button(action: {
+                        showAd = true
+                    }) {
+                        Image(systemName: "ellipsis.circle.fill")
+                            .font(.system(size: 30))
+                            .foregroundColor(.white)
+                            .padding()
+                        Spacer()
+                        Button(action: {
+                            showExplain = true
+                        }) {
+                            Image(systemName: "questionmark.circle.fill")
+                                .font(.system(size: 30))
+                                .foregroundColor(.white)
+                                .padding()
+                        }
+                    }
+                }
+                Spacer()
                 Text(String(format: "%02d.%02d", minutes, seconds))
                     .font(.system(size: 99))
                     .padding()
@@ -54,7 +79,20 @@ struct ContentView: View {
                     }
                     .padding()
                 }
+                Spacer()
             }
+            .sheet(isPresented: $showAd) {
+                ShowAdView(onConfirm: {
+                    showAd = false
+                })
+            }
+            
+            .sheet(isPresented: $showExplain) {
+                ShowExplainView(onConfirm: {
+                    showExplain = false
+                })
+            }
+            
             .onAppear {
                 NotificationCenter.default.addObserver(
                     forName: UIApplication.willResignActiveNotification,
@@ -137,6 +175,128 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
+}
+
+struct ShowAdView: View {
+   var onConfirm: () -> Void
+
+    var body: some View {
+       VStack {
+           Text("Ad.")
+                          .font(.title)
+//                           .bold()
+//                           .monospaced()
+                          .padding()
+                          .foregroundColor(.white)
+                      
+                      Text("Dry Eye Read.")
+                          .font(.title)
+//                           .monospaced()
+                          .padding()
+                          .foregroundColor(.white)
+                          .onTapGesture {
+                              if let url = URL(string: "https://apps.apple.com/id/app/dry-eye-read/id6474282023") {
+                                  UIApplication.shared.open(url)
+                              }
+                          }
+                      
+                      Text("iProgramMe.")
+                          .font(.title)
+//                           .monospaced()
+                          .padding()
+                          .foregroundColor(.white)
+                          .onTapGesture {
+                              if let url = URL(string: "https://apps.apple.com/id/app/iprogramme/id6470770935") {
+                                  UIApplication.shared.open(url)
+                              }
+                          }
+                      
+                      Text("LoopSpeak.")
+                          .font(.title)
+//                           .monospaced()
+                          .padding()
+                          .foregroundColor(.white)
+                          .onTapGesture {
+                              if let url = URL(string: "https://apps.apple.com/id/app/loopspeak/id6473384030") {
+                                  UIApplication.shared.open(url)
+                              }
+                          }
+                      
+                      Text("TimeTell.")
+                          .font(.title)
+//                           .monospaced()
+                          .padding()
+                          .foregroundColor(.white)
+                          .onTapGesture {
+                              if let url = URL(string: "https://apps.apple.com/app/time-tell/id6479016269") {
+                                  UIApplication.shared.open(url)
+                              }
+                          }
+                      
+                      Text("TemptationTrack.")
+                          .font(.title)
+//                           .monospaced()
+                          .padding()
+                          .foregroundColor(.white)
+                          .onTapGesture {
+                              if let url = URL(string: "https://apps.apple.com/id/app/temptationtrack/id6471236988") {
+                                  UIApplication.shared.open(url)
+                              }
+                          }
+
+
+           Spacer()
+
+           Button("Close") {
+               // Perform confirmation action
+               onConfirm()
+           }
+           .font(.title)
+           .padding()
+           .foregroundColor(.black)
+           .background(Color.white)
+           .cornerRadius(25.0)
+           .padding()
+       }
+       .padding()
+       .background(Color(#colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)))
+       .cornerRadius(15.0)
+       .padding()
+   }
+}
+
+struct ShowExplainView: View {
+   var onConfirm: () -> Void
+
+    var body: some View {
+       VStack {
+           Text("Press start to begin the timer, and it will remind you every 30 seconds interval.")
+               .font(.title)
+               .multilineTextAlignment(.center)
+//                       .monospaced()
+               .padding()
+               .foregroundColor(.white)
+
+
+
+           Spacer()
+
+           Button("Close") {
+               // Perform confirmation action
+               onConfirm()
+           }
+           .font(.title)
+           .padding()
+           .foregroundColor(.black)
+           .background(Color.white)
+           .cornerRadius(25.0)
+           .padding()
+       }
+       .padding()
+       .background(Color(#colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)))
+       .cornerRadius(15.0)
+       .padding()
+   }
 }
 
 /*
