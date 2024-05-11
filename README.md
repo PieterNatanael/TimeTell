@@ -2,6 +2,7 @@ Privacy Policy for Time Tell App
 
 Effective Date: 7 March 2024
 
+
 Thank you for choosing Time Tell ("we," "us," or "our"). Protecting your privacy is paramount to us. This Privacy Policy explains our practices regarding the absence of data collection within the Time Tell app (the "App").
 
 1. No Personal Data Collection:
