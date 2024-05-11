@@ -23,6 +23,28 @@ We reserve the right to make changes to this Privacy Policy at any time. Should 
 6. Contact Us:
 If you have any questions or concerns about this Privacy Policy or the App, please feel free to contact us at pieternatanael@icloud.com
 
+French:
+Merci d'avoir choisi Time Tell ("nous," "notre," ou "nos"). Protéger votre vie privée est primordial pour nous. Cette Politique de Confidentialité explique nos pratiques concernant l'absence de collecte de données au sein de l'application Time Tell (l'"Application").
+
+Pas de Collecte de Données Personnelles :
+Time Tell est conçu pour fonctionner sans avoir besoin de collecter, utiliser, ou partager des données personnelles ou des informations de nos utilisateurs. Lorsque vous utilisez l'Application, vous pouvez être assuré que votre vie privée est pleinement respectée, sans que des informations personnelles ou d'utilisation ne soient collectées, stockées, ou traitées.
+
+Pas de Suivi ou d'Analyse :
+Nous n'utilisons aucun type de suivi ou de logiciel d'analyse au sein de l'Application. En conséquence, nous ne surveillons pas vos habitudes d'utilisation de l'application, les informations de votre appareil, ou toute autre donnée liée à votre interaction avec l'Application.
+
+Pas de Partage de Données avec des Tiers :
+Étant donné que nous ne collectons aucune donnée, il n'y a aucune information à partager avec des tiers. L'Application fonctionne de manière indépendante, garantissant que votre utilisation reste privée et sécurisée.
+
+Consentement de l'Utilisateur :
+En téléchargeant et en utilisant l'Application, vous reconnaissez et acceptez les termes décrits dans cette Politique de Confidentialité.
+
+Changements à cette Politique de Confidentialité :
+Nous nous réservons le droit d'apporter des modifications à cette Politique de Confidentialité à tout moment. En cas de modifications, nous vous informerons via l'Application ou en publiant la politique mise à jour sur la plateforme pertinente où l'Application est disponible. Votre utilisation continue de l'Application après tout changement signifie votre acceptation de ces modifications.
+
+Contactez-nous :
+Si vous avez des questions ou des préoccupations concernant cette Politique de Confidentialité ou l'Application, n'hésitez pas à nous contacter à pieternatanael@icloud.com.
+
+
 Arabic:
 سياسة الخصوصية لتطبيق Time Tell
 
