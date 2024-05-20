@@ -1,3 +1,17 @@
+Time Tell
+
+It will tell the time every 30 seconds—just listen, no more guessing or checking your watch—for time-sensitive tasks, workouts, and mindfulness exercises.
+
+Effortless Time Tracking: Just Listen. Time Tell has it covered, breaking down your activity into easily digestible intervals – 30 seconds, 1 minute, 1 minute 30 seconds, 2 minutes, and so on, up to a convenient 60 minutes. No more guessing or checking your watch!
+
+Perfect for time-sensitive tasks, workouts, or mindfulness exercises.
+
+link : https://apps.apple.com/app/time-tell/id6479016269
+
+developer : Pieter Yoshua Natanael
+
+
+
 Privacy Policy for Time Tell App
 
 Effective Date: 7 March 2024
