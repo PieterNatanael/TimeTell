@@ -10,6 +10,7 @@ developer : Pieter Yoshua Natanael
 
 
 
+
 Privacy Policy for Time Tell App
 
 Effective Date: 7 March 2024
