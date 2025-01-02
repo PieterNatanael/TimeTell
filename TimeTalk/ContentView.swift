@@ -21,6 +21,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             // Background Gradient
+    
             LinearGradient(colors: [Color(#colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)), .clear], startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
 
@@ -165,7 +166,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainAppView()
     }
 }
 
@@ -188,24 +189,29 @@ struct AppCardView: View {
 
             VStack(alignment: .leading) {
                 Text(appName)
-                    .font(.title3)
+                    .font(.title.bold())
                 Text(appDescription)
-                    .font(.caption)
+                    .font(.title)
             }
             .frame(alignment: .leading)
 
             Spacer()
-            Button(action: {
-                if let url = URL(string: appURL) {
-                    UIApplication.shared.open(url)
-                }
-            }) {
-                Text("Try")
-                    .font(.headline)
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(Color.blue)
-                    .cornerRadius(10)
+//            Button(action: {
+//                if let url = URL(string: appURL) {
+//                    UIApplication.shared.open(url)
+//                }
+//            }) {
+//                Text("Try")
+//                    .font(.headline)
+//                    .padding()
+//                    .foregroundColor(.white)
+//                    .background(Color.blue)
+//                    .cornerRadius(10)
+//            }
+        }
+        .onTapGesture {
+            if let url = URL(string: appURL) {
+                UIApplication.shared.open(url)
             }
         }
     }
@@ -230,41 +236,60 @@ struct ShowAdsAndAppFunctionalityView: View {
                 // Ads
                 VStack {
                     HStack {
-                        Text("Ads")
+                        Text("Apps for you")
                             .font(.largeTitle.bold())
                         Spacer()
                     }
-                    ZStack {
-                        Image("threedollar")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .cornerRadius(25)
-                            .clipped()
-                            .onTapGesture {
-                                if let url = URL(string: "https://b33.biz/three-dollar/") {
-                                    UIApplication.shared.open(url)
-                                }
-                            }
-                    }
+//                    ZStack {
+//                        Image("threedollar")
+//                            .resizable()
+//                            .aspectRatio(contentMode: .fill)
+//                            .cornerRadius(25)
+//                            .clipped()
+//                            .onTapGesture {
+//                                if let url = URL(string: "https://b33.biz/three-dollar/") {
+//                                    UIApplication.shared.open(url)
+//                                }
+//                            }
+//                    }
                     // Ads App Cards
                     VStack {
+                       
                         Divider().background(Color.gray)
-                        AppCardView(imageName: "bodycam", appName: "BODYCam", appDescription: "Record videos effortlessly and discreetly.", appURL: "https://apps.apple.com/id/app/b0dycam/id6496689003")
+                        CardView(imageName: "takemedication", appName: "Take Medication", appDescription: "Just press any of the 24 buttons, each representing an hour of the day, and you'll get timely reminders to take your medication. It's easy, quick, and ensures you never miss a dose!", appURL: "https://apps.apple.com/id/app/take-medication/id6736924598")
+                        
                         Divider().background(Color.gray)
-                        AppCardView(imageName: "angry", appName: "AngryKid", appDescription: "Guide for parents. Empower your child's emotions. Journal anger, export for parent understanding.", appURL: "https://apps.apple.com/id/app/angry-kid/id6499461061")
+
+                        CardView(imageName: "BST", appName: "Blink Screen Time", appDescription: "Using screens can reduce your blink rate to just 6 blinks per minute, leading to dry eyes and eye strain. Our app helps you maintain a healthy blink rate to prevent these issues and keep your eyes comfortable.", appURL: "https://apps.apple.com/id/app/blink-screen-time/id6587551095")
                         Divider().background(Color.gray)
-                        AppCardView(imageName: "SingLoop", appName: "Sing LOOP", appDescription: "Record your voice effortlessly, and play it back in a loop.", appURL: "https://apps.apple.com/id/app/sing-l00p/id6480459464")
+                        
+//                                            AppCardView(imageName: "loopspeak", appName: "LOOPSpeak", appDescription: "Why read when you can listen on a loop? Easily adjust the reading speed to suit your needs.", appURL: "https://apps.apple.com/id/app/loopspeak/id6473384030")
+                                          
+                     
+                        
+//                        Divider().background(Color.gray)
+                        CardView(imageName: "sos", appName: "SOS light", appDescription: "SOS Light is designed to maximize the chances of getting help in emergency situations.", appURL: "https://apps.apple.com/app/s0s-light/id6504213303")
+                        
                         Divider().background(Color.gray)
-                        AppCardView(imageName: "loopspeak", appName: "LOOPSpeak", appDescription: "Type or paste your text, play in loop, and enjoy hands-free narration.", appURL: "https://apps.apple.com/id/app/loopspeak/id6473384030")
-                        Divider().background(Color.gray)
-                        AppCardView(imageName: "insomnia", appName: "Insomnia Sheep", appDescription: "Design to ease your mind and help you relax leading up to sleep.", appURL: "https://apps.apple.com/id/app/insomnia-sheep/id6479727431")
-                        Divider().background(Color.gray)
-                        AppCardView(imageName: "dryeye", appName: "Dry Eye Read", appDescription: "The go-to solution for a comfortable reading experience, by adjusting font size and color to suit your reading experience.", appURL: "https://apps.apple.com/id/app/dry-eye-read/id6474282023")
-                        Divider().background(Color.gray)
-                        AppCardView(imageName: "iprogram", appName: "iProgramMe", appDescription: "Custom affirmations, schedule notifications, stay inspired daily.", appURL: "https://apps.apple.com/id/app/iprogramme/id6470770935")
-                        Divider().background(Color.gray)
-                        AppCardView(imageName: "temptation", appName: "TemptationTrack", appDescription: "One button to track milestones, monitor progress, and set goals.", appURL: "https://apps.apple.com/id/app/temptation-track/id6449725104")
-                        Divider().background(Color.gray)
+//                        AppCardView(imageName: "worry", appName: "Worry Bin", appDescription: " Helps you track, manage, and conquer your worries like never before.", appURL: "https://apps.apple.com/id/app/worry-bin/id6498626727")
+//                       
+//                        
+//                        Divider().background(Color.gray)
+//                        AppCardView(imageName: "bodycam", appName: "BODYCam", appDescription: "Record long videos easily, adjust video quality easily, and reduce file size.", appURL: "https://apps.apple.com/id/app/b0dycam/id6496689003")
+//                        Divider().background(Color.gray)
+//                        AppCardView(imageName: "angry", appName: "AngryKid", appDescription: "Guide for parents. Empower your child's emotions. Journal anger, export for parent understanding.", appURL: "https://apps.apple.com/id/app/angry-kid/id6499461061")
+//                        Divider().background(Color.gray)
+//                        AppCardView(imageName: "SingLoop", appName: "Sing LOOP", appDescription: "Record your voice effortlessly, and play it back in a loop.", appURL: "https://apps.apple.com/id/app/sing-l00p/id6480459464")
+//                        Divider().background(Color.gray)
+//                 
+//                        AppCardView(imageName: "insomnia", appName: "Insomnia Sheep", appDescription: "Design to ease your mind and help you relax leading up to sleep.", appURL: "https://apps.apple.com/id/app/insomnia-sheep/id6479727431")
+//                        Divider().background(Color.gray)
+//                        AppCardView(imageName: "dryeye", appName: "Dry Eye Read", appDescription: "The go-to solution for a comfortable reading experience, by adjusting font size and color to suit your reading experience.", appURL: "https://apps.apple.com/id/app/dry-eye-read/id6474282023")
+//                        Divider().background(Color.gray)
+//                        AppCardView(imageName: "iprogram", appName: "iProgramMe", appDescription: "Custom affirmations, schedule notifications, stay inspired daily.", appURL: "https://apps.apple.com/id/app/iprogramme/id6470770935")
+//                        Divider().background(Color.gray)
+//                        AppCardView(imageName: "temptation", appName: "TemptationTrack", appDescription: "One button to track milestones, monitor progress, and set goals.", appURL: "https://apps.apple.com/id/app/temptation-track/id6449725104")
+//                        Divider().background(Color.gray)
                     }
                 }
 
@@ -297,9 +322,12 @@ struct ShowAdsAndAppFunctionalityView: View {
                    onConfirm()
                }
                .font(.title)
+               .frame(maxWidth: .infinity)
                .padding()
-               .cornerRadius(25.0)
-               .padding()
+               .background(Color.blue)
+               .foregroundColor(.white)
+               .cornerRadius(10)
+               .padding(.vertical, 10)
            }
            .padding()
            .cornerRadius(15.0)

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21B448672D0018AE00FDC970 /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B448662D0018AE00FDC970 /* MainAppView.swift */; };
+		21B448692D00191F00FDC970 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B448682D00191800FDC970 /* NotesView.swift */; };
+		21B4486F2D001FCF00FDC970 /* clap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 21B4486E2D001FCF00FDC970 /* clap.mp3 */; };
+		21B448712D00201700FDC970 /* flute.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 21B448702D00201700FDC970 /* flute.mp3 */; };
 		21ECFDEE2B99AE9D00E90595 /* TimeTalkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ECFDED2B99AE9D00E90595 /* TimeTalkApp.swift */; };
 		21ECFDF02B99AE9D00E90595 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ECFDEF2B99AE9D00E90595 /* ContentView.swift */; };
 		21ECFDF22B99AE9F00E90595 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21ECFDF12B99AE9F00E90595 /* Assets.xcassets */; };
@@ -15,6 +19,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		21B448662D0018AE00FDC970 /* MainAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
+		21B448682D00191800FDC970 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
+		21B4486E2D001FCF00FDC970 /* clap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clap.mp3; sourceTree = "<group>"; };
+		21B448702D00201700FDC970 /* flute.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = flute.mp3; sourceTree = "<group>"; };
 		21ECFDEA2B99AE9D00E90595 /* Time Tell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Time Tell.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21ECFDED2B99AE9D00E90595 /* TimeTalkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTalkApp.swift; sourceTree = "<group>"; };
 		21ECFDEF2B99AE9D00E90595 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,7 +66,11 @@
 				21ECFDED2B99AE9D00E90595 /* TimeTalkApp.swift */,
 				21ECFDFB2B99B53D00E90595 /* AppDelegate.swift */,
 				21ECFDEF2B99AE9D00E90595 /* ContentView.swift */,
+				21B448662D0018AE00FDC970 /* MainAppView.swift */,
+				21B448682D00191800FDC970 /* NotesView.swift */,
 				21ECFDF12B99AE9F00E90595 /* Assets.xcassets */,
+				21B448702D00201700FDC970 /* flute.mp3 */,
+				21B4486E2D001FCF00FDC970 /* clap.mp3 */,
 				21ECFDF32B99AE9F00E90595 /* Preview Content */,
 			);
 			path = TimeTalk;
@@ -132,6 +144,8 @@
 			files = (
 				21ECFDF52B99AE9F00E90595 /* Preview Assets.xcassets in Resources */,
 				21ECFDF22B99AE9F00E90595 /* Assets.xcassets in Resources */,
+				21B4486F2D001FCF00FDC970 /* clap.mp3 in Resources */,
+				21B448712D00201700FDC970 /* flute.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +157,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				21ECFDFC2B99B53D00E90595 /* AppDelegate.swift in Sources */,
+				21B448672D0018AE00FDC970 /* MainAppView.swift in Sources */,
+				21B448692D00191F00FDC970 /* NotesView.swift in Sources */,
 				21ECFDF02B99AE9D00E90595 /* ContentView.swift in Sources */,
 				21ECFDEE2B99AE9D00E90595 /* TimeTalkApp.swift in Sources */,
 			);
@@ -276,7 +292,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3.3;
+				CURRENT_PROJECT_VERSION = 3.5;
 				DEVELOPMENT_ASSET_PATHS = "\"TimeTalk/Preview Content\"";
 				DEVELOPMENT_TEAM = L295MT4VTH;
 				ENABLE_PREVIEWS = YES;
@@ -292,7 +308,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6;
+				MARKETING_VERSION = 6.5;
 				PRODUCT_BUNDLE_IDENTIFIER = PieterNatanael.TimeTalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -307,7 +323,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3.3;
+				CURRENT_PROJECT_VERSION = 3.5;
 				DEVELOPMENT_ASSET_PATHS = "\"TimeTalk/Preview Content\"";
 				DEVELOPMENT_TEAM = L295MT4VTH;
 				ENABLE_PREVIEWS = YES;
@@ -323,7 +339,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6;
+				MARKETING_VERSION = 6.5;
 				PRODUCT_BUNDLE_IDENTIFIER = PieterNatanael.TimeTalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
