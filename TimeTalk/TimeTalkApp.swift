@@ -19,16 +19,4 @@ struct TimeTalkApp: App {
     }
 }
 
-/*
 
-import SwiftUI
-
-@main
-struct TimeTalkApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
-}
-*/

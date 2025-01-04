@@ -28,12 +28,6 @@ struct MainAppView: View {
                 }
                 .tag(1)
             
-//            DiaryView(dataStore: DataStore())
-//                .tabItem {
-//                    Image(systemName: "square.and.pencil")
-//                    Text("Diary")
-//                }
-//                .tag(2)
         }
     }
 }

@@ -231,6 +231,8 @@ struct AppCardView: View {
     }
 }
 
+
+
 struct ShowAdsAndAppFunctionalityView: View {
     var onConfirm: () -> Void
 
