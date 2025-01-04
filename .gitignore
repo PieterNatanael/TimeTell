@@ -1,0 +1,58 @@
+# User-specific files
+*.xcuserstate
+*.xcuserdata
+
+# Build artifacts
+DerivedData/
+build/
+
+# Logs
+*.log
+
+# Temporary files
+*.swp
+*.lock
+*~
+
+# macOS files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# iOS Simulator generated files
+*.plist
+*.mobileprovision
+*.xcworkspacedata
+*.xcworkspace/xcuserdata
+*.xcdebugger/
+
+# Swift Package Manager
+.swiftpm/
+Package.resolved
+
+# Carthage
+Carthage/Build/
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output/
+
+# Firebase
+GoogleService-Info.plist
+
+# Xcode Archive files
+*.xcarchive
+
+# Others
+*.xcodeproj/project.xcworkspace/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/xcshareddata/xcschemes/*
+!*.xcodeproj/xcshareddata/xcschemes/*.xcscheme
+*.xcworkspace/xcuserdata/
+!*.xcworkspace/xcshareddata/
