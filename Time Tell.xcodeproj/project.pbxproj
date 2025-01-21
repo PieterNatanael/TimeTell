@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,7 +18,18 @@
 		21ECFDFC2B99B53D00E90595 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ECFDFB2B99B53D00E90595 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		219937202D3F937E00115254 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21ECFDE22B99AE9D00E90595 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 21ECFDE92B99AE9D00E90595;
+			remoteInfo = "Time Tell";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		2199371C2D3F937E00115254 /* Time TellTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Time TellTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21B448662D0018AE00FDC970 /* MainAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
 		21B448682D00191800FDC970 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
 		21B4486E2D001FCF00FDC970 /* clap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clap.mp3; sourceTree = "<group>"; };
@@ -32,7 +43,18 @@
 		21ECFDFD2B99B97700E90595 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		2199371D2D3F937E00115254 /* Time TellTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "Time TellTests"; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
+		219937192D3F937E00115254 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		21ECFDE72B99AE9D00E90595 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -47,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				21ECFDEC2B99AE9D00E90595 /* TimeTalk */,
+				2199371D2D3F937E00115254 /* Time TellTests */,
 				21ECFDEB2B99AE9D00E90595 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				21ECFDEA2B99AE9D00E90595 /* Time Tell.app */,
+				2199371C2D3F937E00115254 /* Time TellTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -87,6 +111,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2199371B2D3F937E00115254 /* Time TellTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 219937242D3F937E00115254 /* Build configuration list for PBXNativeTarget "Time TellTests" */;
+			buildPhases = (
+				219937182D3F937E00115254 /* Sources */,
+				219937192D3F937E00115254 /* Frameworks */,
+				2199371A2D3F937E00115254 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				219937212D3F937E00115254 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				2199371D2D3F937E00115254 /* Time TellTests */,
+			);
+			name = "Time TellTests";
+			packageProductDependencies = (
+			);
+			productName = "Time TellTests";
+			productReference = 2199371C2D3F937E00115254 /* Time TellTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		21ECFDE92B99AE9D00E90595 /* Time Tell */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 21ECFDF82B99AE9F00E90595 /* Build configuration list for PBXNativeTarget "Time Tell" */;
@@ -111,9 +158,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1520;
+				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
+					2199371B2D3F937E00115254 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 21ECFDE92B99AE9D00E90595;
+					};
 					21ECFDE92B99AE9D00E90595 = {
 						CreatedOnToolsVersion = 15.2;
 					};
@@ -133,11 +184,19 @@
 			projectRoot = "";
 			targets = (
 				21ECFDE92B99AE9D00E90595 /* Time Tell */,
+				2199371B2D3F937E00115254 /* Time TellTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2199371A2D3F937E00115254 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		21ECFDE82B99AE9D00E90595 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -152,6 +211,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		219937182D3F937E00115254 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		21ECFDE62B99AE9D00E90595 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -166,7 +232,53 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		219937212D3F937E00115254 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 21ECFDE92B99AE9D00E90595 /* Time Tell */;
+			targetProxy = 219937202D3F937E00115254 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		219937222D3F937E00115254 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L295MT4VTH;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "PieterNatanael.Time-TellTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Time Tell.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Time Tell";
+			};
+			name = Debug;
+		};
+		219937232D3F937E00115254 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L295MT4VTH;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "PieterNatanael.Time-TellTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Time Tell.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Time Tell";
+			};
+			name = Release;
+		};
 		21ECFDF62B99AE9F00E90595 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -351,6 +463,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		219937242D3F937E00115254 /* Build configuration list for PBXNativeTarget "Time TellTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				219937222D3F937E00115254 /* Debug */,
+				219937232D3F937E00115254 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		21ECFDE52B99AE9D00E90595 /* Build configuration list for PBXProject "Time Tell" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
