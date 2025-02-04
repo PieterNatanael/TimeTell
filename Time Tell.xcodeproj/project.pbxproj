@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		213CC84F2D51B5F800372795 /* AdsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213CC84E2D51B5EC00372795 /* AdsView.swift */; };
 		21B448672D0018AE00FDC970 /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B448662D0018AE00FDC970 /* MainAppView.swift */; };
 		21B448692D00191F00FDC970 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B448682D00191800FDC970 /* NotesView.swift */; };
 		21B4486F2D001FCF00FDC970 /* clap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 21B4486E2D001FCF00FDC970 /* clap.mp3 */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		213CC84E2D51B5EC00372795 /* AdsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsView.swift; sourceTree = "<group>"; };
 		2199371C2D3F937E00115254 /* Time TellTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Time TellTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21B448662D0018AE00FDC970 /* MainAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
 		21B448682D00191800FDC970 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				21ECFDFB2B99B53D00E90595 /* AppDelegate.swift */,
 				21ECFDEF2B99AE9D00E90595 /* ContentView.swift */,
 				21B448662D0018AE00FDC970 /* MainAppView.swift */,
+				213CC84E2D51B5EC00372795 /* AdsView.swift */,
 				21B448682D00191800FDC970 /* NotesView.swift */,
 				21ECFDF12B99AE9F00E90595 /* Assets.xcassets */,
 				21B448702D00201700FDC970 /* flute.mp3 */,
@@ -225,6 +228,7 @@
 				21ECFDFC2B99B53D00E90595 /* AppDelegate.swift in Sources */,
 				21B448672D0018AE00FDC970 /* MainAppView.swift in Sources */,
 				21B448692D00191F00FDC970 /* NotesView.swift in Sources */,
+				213CC84F2D51B5F800372795 /* AdsView.swift in Sources */,
 				21ECFDF02B99AE9D00E90595 /* ContentView.swift in Sources */,
 				21ECFDEE2B99AE9D00E90595 /* TimeTalkApp.swift in Sources */,
 			);
