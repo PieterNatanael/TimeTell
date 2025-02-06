@@ -5,6 +5,181 @@
 //  Created by Pieter Yoshua Natanael on 07/03/24.
 //
 
+
+import SwiftUI
+import AVFoundation
+
+struct ContentView: View {
+    // MARK: - Properties
+    @State private var minutes: Int = 0
+    @State private var seconds: Int = 0
+    @State private var isTimerRunning = false
+    @State private var timer: Timer?
+    @State private var speechSynthesizer = AVSpeechSynthesizer()
+    @State private var backgroundTaskID: UIBackgroundTaskIdentifier?
+    @State private var showPurchaseMenu: Bool = false
+    
+    @AppStorage("launchCount") private var launchCount = 0
+    @AppStorage("isProUser") private var isProUser = false
+    
+    var body: some View {
+        ZStack {
+            LinearGradient(colors: [Color.blue, .clear], startPoint: .top, endPoint: .bottom)
+                .ignoresSafeArea()
+            VStack {
+                HStack {
+                    Button(action: {
+                        showPurchaseMenu = true
+                    }) {
+                        Image(systemName: "line.3.horizontal")
+                            .font(.system(size: 30))
+                            .foregroundColor(.white)
+                            .padding()
+                    }
+                    Spacer()
+                }
+                Spacer()
+                Text(String(format: "%02d:%02d", minutes, seconds))
+                    .font(.system(size: 99))
+                    .padding()
+                VStack {
+                    Button(action: {
+                        if canUseApp() {
+                            isTimerRunning ? pauseTimer() : startTimer()
+                        }
+                    }) {
+                        Text(isTimerRunning ? "Pause" : "Start")
+                            .font(.title)
+                            .padding()
+                            .frame(width: 233)
+                            .foregroundColor(Color.black)
+                            .background(Color.white)
+                            .cornerRadius(25.0)
+                    }
+                    .padding()
+                    .disabled(!canUseApp())
+                    
+                    Button(action: resetTimer) {
+                        Text("Reset")
+                            .font(.title)
+                            .padding()
+                            .frame(width: 233)
+                            .foregroundColor(.white)
+                            .background(Color.blue)
+                            .cornerRadius(25.0)
+                    }
+                    .padding()
+                }
+                Spacer()
+            }
+        }
+        .sheet(isPresented: $showPurchaseMenu) {
+            PurchaseMenuView(isProUser: $isProUser)
+        }
+        .onAppear {
+            launchCount += 1
+            checkReceipt()
+        }
+    }
+    
+    private func canUseApp() -> Bool {
+        return isProUser || launchCount <= 10
+    }
+    
+    private func startTimer() {
+        isTimerRunning = true
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            let totalSeconds = self.minutes * 60 + self.seconds
+            self.updateTime(totalSeconds: totalSeconds + 1)
+        }
+    }
+    
+    private func pauseTimer() {
+        isTimerRunning = false
+        timer?.invalidate()
+    }
+    
+    private func resetTimer() {
+        isTimerRunning = false
+        timer?.invalidate()
+        minutes = 0
+        seconds = 0
+    }
+    
+    private func updateTime(totalSeconds: Int) {
+        minutes = totalSeconds / 60
+        seconds = totalSeconds % 60
+        if totalSeconds > 0 && totalSeconds % 30 == 0 {
+            speakTime()
+        }
+    }
+    
+    private func speakTime() {
+        var timeToSpeak = ""
+        if minutes > 0 {
+            timeToSpeak += "\(minutes) minute\(minutes == 1 ? "" : "s")"
+        }
+        if seconds == 30 {
+            timeToSpeak += " and thirty seconds"
+        }
+        if !timeToSpeak.isEmpty {
+            let speechUtterance = AVSpeechUtterance(string: timeToSpeak)
+            speechSynthesizer.speak(speechUtterance)
+        }
+    }
+    
+    private func checkReceipt() {
+        if UserDefaults.standard.bool(forKey: "previouslyPaid") {
+            isProUser = true
+        }
+    }
+}
+
+struct PurchaseMenuView: View {
+    @Binding var isProUser: Bool
+    @Environment(\.presentationMode) var presentationMode
+    
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("Upgrade to Pro")
+                .font(.title)
+            Button("Buy Full Access ($8.99)") {
+                isProUser = true
+                UserDefaults.standard.set(true, forKey: "previouslyPaid")
+                presentationMode.wrappedValue.dismiss()
+            }
+            .padding()
+            .background(Color.blue)
+            .foregroundColor(.white)
+            .cornerRadius(10)
+            
+            Button("Restore Purchase") {
+                if UserDefaults.standard.bool(forKey: "previouslyPaid") {
+                    isProUser = true
+                }
+            }
+            .padding()
+            .background(Color.gray)
+            .foregroundColor(.white)
+            .cornerRadius(10)
+            
+            Button("Close") {
+                presentationMode.wrappedValue.dismiss()
+            }
+            .padding()
+        }
+        .padding()
+    }
+}
+
+// MARK: - Preview
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        MainAppView()
+    }
+}
+
+/*
 import SwiftUI
 import AVFoundation
 
@@ -196,3 +371,4 @@ struct ContentView_Previews: PreviewProvider {
         MainAppView()
     }
 }
+*/
