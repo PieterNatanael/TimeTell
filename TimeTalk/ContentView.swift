@@ -6,8 +6,19 @@
 //
 
 
+
+/// A speaking timer application that announces time at regular intervals.
+/// This view provides a user interface for:
+/// - Starting and pausing a timer
+/// - Resetting the timer
+/// - Voice announcements every 30 seconds
+/// - Background task handling for continuous operation
+/// - Information about the app's functionality
+
 import SwiftUI
 import AVFoundation
+
+   
 
 struct ContentView: View {
     // MARK: - Properties
@@ -83,7 +94,7 @@ struct ContentView: View {
     }
     
     private func canUseApp() -> Bool {
-        return isProUser || launchCount <= 10
+        return isProUser || launchCount <= 5
     }
     
     private func startTimer() {
@@ -178,6 +189,8 @@ struct ContentView_Previews: PreviewProvider {
         MainAppView()
     }
 }
+
+
 
 /*
 import SwiftUI
