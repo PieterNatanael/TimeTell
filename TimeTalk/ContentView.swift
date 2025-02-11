@@ -204,6 +204,15 @@ struct ContentView_Previews: PreviewProvider {
 /*
 import SwiftUI
 import AVFoundation
+ 
+ /// A speaking timer application that announces time at regular intervals.
+ /// This view provides a user interface for:
+ /// - Starting and pausing a timer
+ /// - Resetting the timer
+ /// - Voice announcements every 30 seconds
+ /// - Background task handling for continuous operation
+ /// - Information about the app's functionality
+ 
 
 /// A speaking timer application that announces time at regular intervals.
 /// This view provides a user interface for:
