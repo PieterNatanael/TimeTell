@@ -39,7 +39,7 @@ struct ContentView: View {
         ZStack {
             // Background Gradient
     
-            LinearGradient(colors: [Color(#colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)), .clear], startPoint: .top, endPoint: .bottom)
+            LinearGradient(colors: [Color(#colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)), .clear], startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
 
             VStack {
