@@ -6,8 +6,176 @@
 //
 
 
+import SwiftUI
+import AVFoundation
 
+struct ContentView: View {
+    // MARK: - Properties
+    
+    // Timer State
+    @State private var minutes: Int = 0
+    @State private var seconds: Int = 0
+    @State private var isTimerRunning = false
+    @State private var timer: DispatchSourceTimer?
+    
+    // Audio
+    private let speechSynthesizer = AVSpeechSynthesizer()
+    
+    // Background Task
+    @State private var backgroundTaskID: UIBackgroundTaskIdentifier?
+    
+    // UI State
+    @State private var showAdsAndAppFunctionality: Bool = false
+    
+    // MARK: - View Body
+    var body: some View {
+        ZStack {
+            LinearGradient(colors: [Color(#colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)), .clear], startPoint: .top, endPoint: .bottom)
+                .ignoresSafeArea()
 
+            VStack {
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        showAdsAndAppFunctionality = true
+                    }) {
+                        Image(systemName: "questionmark.circle.fill")
+                            .font(.system(size: 30))
+                            .foregroundColor(.white)
+                            .padding()
+                    }
+                }
+                Spacer()
+                Text(String(format: "%02d:%02d", minutes, seconds))
+                    .font(.system(size: 99))
+                    .padding()
+                VStack {
+                    TimerButton(label: isTimerRunning ? "Pause" : "Start", action: isTimerRunning ? pauseTimer : startTimer)
+                    TimerButton(label: "Reset", action: resetTimer)
+                }
+                Spacer()
+            }
+            .sheet(isPresented: $showAdsAndAppFunctionality) {
+                ShowAdsAndAppFunctionalityView(onConfirm: {
+                    showAdsAndAppFunctionality = false
+                })
+            }
+            .onAppear {
+                setupBackgroundTaskHandling()
+            }
+        }
+    }
+
+    // MARK: - Timer Functions
+    
+    private func startTimer() {
+        guard !isTimerRunning else { return }
+        isTimerRunning = true
+        
+        timer = DispatchSource.makeTimerSource(queue: .main)
+        timer?.schedule(deadline: .now(), repeating: 1)
+        timer?.setEventHandler { // Remove [weak self] here
+            let totalSeconds = self.minutes * 60 + self.seconds
+            self.updateTime(totalSeconds: totalSeconds + 1)
+        }
+        timer?.resume()
+    }
+    
+    private func pauseTimer() {
+        isTimerRunning = false
+        timer?.cancel()
+        timer = nil
+    }
+    
+    private func resetTimer() {
+        pauseTimer()
+        minutes = 0
+        seconds = 0
+    }
+    
+    private func updateTime(totalSeconds: Int) {
+        minutes = totalSeconds / 60
+        seconds = totalSeconds % 60
+
+        if totalSeconds > 0 && totalSeconds % 30 == 0 && totalSeconds <= 60 * 60 {
+            speakTime()
+        }
+
+        if totalSeconds >= 60 * 60 {
+            pauseTimer()
+        }
+    }
+    
+    private func speakTime() {
+        guard !speechSynthesizer.isSpeaking else { return }
+        
+        var timeToSpeak = ""
+        if minutes > 0 {
+            timeToSpeak += "\(minutes) minute\(minutes == 1 ? "" : "s")"
+        }
+        if seconds == 30 {
+            timeToSpeak += " and thirty seconds"
+        }
+
+        if !timeToSpeak.isEmpty {
+            let speechUtterance = AVSpeechUtterance(string: timeToSpeak)
+            speechSynthesizer.speak(speechUtterance)
+        }
+    }
+    
+    private func setupBackgroundTaskHandling() {
+        NotificationCenter.default.addObserver(
+            forName: UIApplication.willResignActiveNotification,
+            object: nil,
+            queue: .main) { _ in
+                backgroundTaskID = UIApplication.shared.beginBackgroundTask {
+                    if let backgroundTaskID = backgroundTaskID {
+                        UIApplication.shared.endBackgroundTask(backgroundTaskID)
+                        self.backgroundTaskID = nil
+                    }
+                }
+                if backgroundTaskID != .invalid, UIApplication.shared.backgroundTimeRemaining < 30 {
+                    UIApplication.shared.endBackgroundTask(backgroundTaskID!)
+                    backgroundTaskID = .invalid
+                }
+        }
+
+        NotificationCenter.default.addObserver(
+            forName: UIApplication.didBecomeActiveNotification,
+            object: nil,
+            queue: .main) { _ in
+                if let backgroundTaskID = backgroundTaskID {
+                    UIApplication.shared.endBackgroundTask(backgroundTaskID)
+                    self.backgroundTaskID = nil
+                }
+        }
+    }
+}
+
+// MARK: - Reusable Components
+@ViewBuilder
+private func TimerButton(label: String, action: @escaping () -> Void) -> some View {
+    Button(action: action) {
+        Text(label)
+            .font(.title)
+            .padding()
+            .frame(width: 233)
+            .foregroundColor(label == "Reset" ? .white : .black)
+            .background(label == "Reset" ? Color.blue : Color.white)
+            .cornerRadius(25.0)
+    }
+    .padding()
+}
+
+// MARK: - Preview
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+/*
+//bagus dan sudah launch namun mau di improve
 import SwiftUI
 import AVFoundation
 
@@ -200,6 +368,7 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+*/
 
 /*
 import SwiftUI
