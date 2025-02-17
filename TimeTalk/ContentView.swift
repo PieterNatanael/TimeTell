@@ -7,24 +7,10 @@
 
 
 import SwiftUI
-import AVFoundation
 
 struct ContentView: View {
     // MARK: - Properties
-    
-    // Timer State
-    @State private var minutes: Int = 0
-    @State private var seconds: Int = 0
-    @State private var isTimerRunning = false
-    @State private var timer: DispatchSourceTimer?
-    
-    // Audio
-    private let speechSynthesizer = AVSpeechSynthesizer()
-    
-    // Background Task
-    @State private var backgroundTaskID: UIBackgroundTaskIdentifier?
-    
-    // UI State
+    @StateObject private var timerManager = TimerManager()
     @State private var showAdsAndAppFunctionality: Bool = false
     
     // MARK: - View Body
@@ -46,12 +32,12 @@ struct ContentView: View {
                     }
                 }
                 Spacer()
-                Text(String(format: "%02d:%02d", minutes, seconds))
+                Text(String(format: "%02d:%02d", timerManager.minutes, timerManager.seconds))
                     .font(.system(size: 99))
                     .padding()
                 VStack {
-                    TimerButton(label: isTimerRunning ? "Pause" : "Start", action: isTimerRunning ? pauseTimer : startTimer)
-                    TimerButton(label: "Reset", action: resetTimer)
+                    TimerButton(label: timerManager.isTimerRunning ? "Pause" : "Start", action: timerManager.isTimerRunning ? timerManager.pauseTimer : timerManager.startTimer)
+                    TimerButton(label: "Reset", action: timerManager.resetTimer)
                 }
                 Spacer()
             }
@@ -60,94 +46,6 @@ struct ContentView: View {
                     showAdsAndAppFunctionality = false
                 })
             }
-            .onAppear {
-                setupBackgroundTaskHandling()
-            }
-        }
-    }
-
-    // MARK: - Timer Functions
-    
-    private func startTimer() {
-        guard !isTimerRunning else { return }
-        isTimerRunning = true
-        
-        timer = DispatchSource.makeTimerSource(queue: .main)
-        timer?.schedule(deadline: .now(), repeating: 1)
-        timer?.setEventHandler { // Remove [weak self] here
-            let totalSeconds = self.minutes * 60 + self.seconds
-            self.updateTime(totalSeconds: totalSeconds + 1)
-        }
-        timer?.resume()
-    }
-    
-    private func pauseTimer() {
-        isTimerRunning = false
-        timer?.cancel()
-        timer = nil
-    }
-    
-    private func resetTimer() {
-        pauseTimer()
-        minutes = 0
-        seconds = 0
-    }
-    
-    private func updateTime(totalSeconds: Int) {
-        minutes = totalSeconds / 60
-        seconds = totalSeconds % 60
-
-        if totalSeconds > 0 && totalSeconds % 30 == 0 && totalSeconds <= 60 * 60 {
-            speakTime()
-        }
-
-        if totalSeconds >= 60 * 60 {
-            pauseTimer()
-        }
-    }
-    
-    private func speakTime() {
-        guard !speechSynthesizer.isSpeaking else { return }
-        
-        var timeToSpeak = ""
-        if minutes > 0 {
-            timeToSpeak += "\(minutes) minute\(minutes == 1 ? "" : "s")"
-        }
-        if seconds == 30 {
-            timeToSpeak += " and thirty seconds"
-        }
-
-        if !timeToSpeak.isEmpty {
-            let speechUtterance = AVSpeechUtterance(string: timeToSpeak)
-            speechSynthesizer.speak(speechUtterance)
-        }
-    }
-    
-    private func setupBackgroundTaskHandling() {
-        NotificationCenter.default.addObserver(
-            forName: UIApplication.willResignActiveNotification,
-            object: nil,
-            queue: .main) { _ in
-                backgroundTaskID = UIApplication.shared.beginBackgroundTask {
-                    if let backgroundTaskID = backgroundTaskID {
-                        UIApplication.shared.endBackgroundTask(backgroundTaskID)
-                        self.backgroundTaskID = nil
-                    }
-                }
-                if backgroundTaskID != .invalid, UIApplication.shared.backgroundTimeRemaining < 30 {
-                    UIApplication.shared.endBackgroundTask(backgroundTaskID!)
-                    backgroundTaskID = .invalid
-                }
-        }
-
-        NotificationCenter.default.addObserver(
-            forName: UIApplication.didBecomeActiveNotification,
-            object: nil,
-            queue: .main) { _ in
-                if let backgroundTaskID = backgroundTaskID {
-                    UIApplication.shared.endBackgroundTask(backgroundTaskID)
-                    self.backgroundTaskID = nil
-                }
         }
     }
 }
