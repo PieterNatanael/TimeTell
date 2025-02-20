@@ -15,6 +15,7 @@ import AVFoundation
 /// - Sound effects for user interactions
 /// - Data persistence using UserDefaults
 /// - Days ago calculation for each note
+///
 struct NotesView: View {
     // MARK: - UI State
     @State private var showAdsAndAppFunctionality = false
@@ -74,6 +75,7 @@ struct NotesView: View {
         playSoundEffect()
         showMessage(title: "Thank You!", message: "Thank you for sharing your notes.")
     }
+    
     
     /// Deletes notes at the specified offsets.
     /// - Parameter offsets: IndexSet of items to delete
