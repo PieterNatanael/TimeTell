@@ -29,8 +29,7 @@ class TimerManager: ObservableObject {
         timer?.schedule(deadline: .now(), repeating: 1)
         timer?.setEventHandler { [weak self] in
             guard let self = self else { return }
-            let totalSeconds = self.minutes * 60 + self.seconds
-            self.updateTime(totalSeconds: totalSeconds + 1)
+            self.updateTime(totalSeconds: self.minutes * 60 + self.seconds + 1)
         }
         timer?.resume()
     }
@@ -47,15 +46,15 @@ class TimerManager: ObservableObject {
         seconds = 0
     }
     
-    func updateTime(totalSeconds: Int) {
+    private func updateTime(totalSeconds: Int) {
         minutes = totalSeconds / 60
         seconds = totalSeconds % 60
 
-        if totalSeconds > 0 && totalSeconds % 30 == 0 && totalSeconds <= 60 * 60 {
+        if totalSeconds > 0, totalSeconds % 30 == 0, totalSeconds <= 3600 {
             speakTime()
         }
 
-        if totalSeconds >= 60 * 60 {
+        if totalSeconds >= 3600 {
             pauseTimer()
         }
     }
