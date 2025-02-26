@@ -5,14 +5,17 @@
 //  Created by Pieter Yoshua Natanael on 07/03/24.
 //
 
-
 import SwiftUI
+import os.log // Import os.log for structured logging
 
 struct ContentView: View {
     // MARK: - Properties
     @StateObject private var timerManager = TimerManager()
     @State private var showAdsAndAppFunctionality: Bool = false
     
+    // Create a logger instance for structured logging
+    private let logger = Logger(subsystem: "com.PieterNatanael.TimeTalk", category: "ContentView")
+
     // MARK: - View Body
     var body: some View {
         ZStack {
@@ -23,6 +26,7 @@ struct ContentView: View {
                 HStack {
                     Spacer()
                     Button(action: {
+                        logger.log("Info button tapped")
                         showAdsAndAppFunctionality = true
                     }) {
                         Image(systemName: "questionmark.circle.fill")
@@ -36,16 +40,29 @@ struct ContentView: View {
                     .font(.system(size: 99))
                     .padding()
                 VStack {
-                    TimerButton(label: timerManager.isTimerRunning ? "Pause" : "Start", action: timerManager.isTimerRunning ? timerManager.pauseTimer : timerManager.startTimer)
-                    TimerButton(label: "Reset", action: timerManager.resetTimer)
+                    TimerButton(label: timerManager.isTimerRunning ? "Pause" : "Start", action: {
+                        logger.log("\(timerManager.isTimerRunning ? "Pause" : "Start") button tapped")
+                        timerManager.isTimerRunning ? timerManager.pauseTimer() : timerManager.startTimer()
+                    })
+                    TimerButton(label: "Reset", action: {
+                        logger.log("Reset button tapped")
+                        timerManager.resetTimer()
+                    })
                 }
                 Spacer()
             }
             .sheet(isPresented: $showAdsAndAppFunctionality) {
                 ShowAdsAndAppFunctionalityView(onConfirm: {
+                    logger.log("Ads and functionality view dismissed")
                     showAdsAndAppFunctionality = false
                 })
             }
+        }
+        .onAppear {
+            logger.log("ContentView appeared")
+        }
+        .onDisappear {
+            logger.log("ContentView disappeared")
         }
     }
 }

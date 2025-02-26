@@ -22,6 +22,7 @@ class TimerManager: ObservableObject {
     // MARK: - Timer Functions
     
     func startTimer() {
+        print("Timer Started")
         guard !isTimerRunning else { return }
         isTimerRunning = true
         
@@ -35,12 +36,14 @@ class TimerManager: ObservableObject {
     }
     
     func pauseTimer() {
+        print("Timer paused")
         isTimerRunning = false
         timer?.cancel()
         timer = nil
     }
     
     func resetTimer() {
+        print("Timer reset")
         pauseTimer()
         minutes = 0
         seconds = 0
