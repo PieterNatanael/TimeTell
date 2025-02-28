@@ -61,9 +61,9 @@ class TimerManager: ObservableObject {
             pauseTimer()
         }
     }
-    
+    //speak function
     private func speakTime() {
-        print("speak time")
+      
         guard !speechSynthesizer.isSpeaking else { return }
         
         var timeToSpeak = ""
