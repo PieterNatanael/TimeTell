@@ -16,12 +16,12 @@ struct MainAppView: View {
         TabView(selection: $selectedTab) {
             ContentView()
                 .tabItem {
-                    Image(systemName: "timer.circle.fill")
+                    Image(systemName: "timer")
                     Text("TimeTell")
                 }
                 .tag(0)
             
-           NotesView()
+            NotesView()
                 .tabItem {
                     Image(systemName: "square.and.pencil")
                     Text("Notes")
@@ -30,4 +30,8 @@ struct MainAppView: View {
             
         }
     }
+}
+
+#Preview {
+    MainAppView()
 }

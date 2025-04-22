@@ -112,13 +112,14 @@ struct AppCardView: View {
                 .frame(width: 60, height: 60)
                 .cornerRadius(7)
 
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading) {
                 Text(appName)
-                    .font(.title.bold())
+                    .font(.title3)
                 Text(appDescription)
-                    .font(.title)
+                    .font(.caption)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
+            .frame(alignment: .leading)
+
 
             Spacer()
         }
