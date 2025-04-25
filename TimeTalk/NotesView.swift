@@ -431,7 +431,7 @@ class DataManager {
         guard let loadedWorries = try? decoder.decode([Worry].self, from: data) else { return [] }
         return loadedWorries
     }
-
+    /// Function to save notes
     func saveWorry(_ worry: Worry) {
         var savedWorries = loadWorries()
         savedWorries.append(worry)
